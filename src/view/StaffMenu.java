@@ -23,16 +23,11 @@ public class StaffMenu extends JFrame {
 	private controller controllerInternalRef;
 
 	public StaffMenu (controller controller) {
-		this.controllerInternalRef = controller;
-	}
-	
-
-	/**
-	 * Create the frame.
-	 * @wbp.parser.constructor
-	 */
-	public StaffMenu(Staff userLogged) {
 		
+		this.controllerInternalRef = controller;
+	
+		
+		setTitle("Ultra Vision");
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,10 +38,10 @@ public class StaffMenu extends JFrame {
 		setContentPane(contentPane);
 		
 		JButton btnCust = new JButton("Members");
-		btnCust.setBounds(12, 52, 195, 73);
+		btnCust.setBounds(92, 53, 280, 104);
 		btnCust.setForeground(new Color(0, 0, 0));
 		btnCust.setSelectedIcon(null);
-		btnCust.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 15));
+		btnCust.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 18));
 		btnCust.setBackground(Color.WHITE);
 		btnCust.setHorizontalAlignment(SwingConstants.LEADING);
 		btnCust.setIcon(new ImageIcon("C:\\Users\\daniq\\eclipse-workspace\\Newworkspace OOC\\ultraVision_2018289\\icons\\poeple small.png"));
@@ -57,21 +52,21 @@ public class StaffMenu extends JFrame {
 		contentPane.add(btnCust);
 		
 		JButton btnEntertaiment = new JButton("Entertaiment");
-		btnEntertaiment.setBounds(268, 52, 205, 73);
+		btnEntertaiment.setBounds(93, 255, 279, 111);
 		btnEntertaiment.addActionListener((ActionListener)controllerInternalRef);
 		btnEntertaiment.setActionCommand("Entertaiment");
 			
 		btnEntertaiment.setIcon(new ImageIcon("C:\\Users\\daniq\\eclipse-workspace\\Newworkspace OOC\\ultraVision_2018289\\icons\\folder-video-icon (1).png"));
 		btnEntertaiment.setHorizontalAlignment(SwingConstants.LEADING);
-		btnEntertaiment.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 15));
+		btnEntertaiment.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 18));
 		btnEntertaiment.setBackground(new Color(224, 255, 255));
 		contentPane.add(btnEntertaiment);
 		
 		JButton btnSearch = new JButton("Search");
-		btnSearch.setBounds(558, 52, 205, 73);
+		btnSearch.setBounds(92, 506, 280, 104);
 		btnSearch.setIcon(new ImageIcon("C:\\Users\\daniq\\eclipse-workspace\\Newworkspace OOC\\ultraVision_2018289\\icons\\Search-icon.png"));
 		btnSearch.setHorizontalAlignment(SwingConstants.LEADING);
-		btnSearch.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 15));
+		btnSearch.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 18));
 		btnSearch.setBackground(new Color(224, 255, 255));
 		contentPane.add(btnSearch);
 		btnSearch.addActionListener((ActionListener)controllerInternalRef);
@@ -91,6 +86,6 @@ public class StaffMenu extends JFrame {
 		
 		
 		this.validate();
-		this.repaint();
+	    this.repaint();
 	}
 }
