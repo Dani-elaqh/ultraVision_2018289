@@ -5,22 +5,22 @@ public class Customer {
 	private String fn;
 	private String ln;
 	private String phone;
-	MemberReg st;
+	private String type;
 	private String cn;
 	private String date;
 	
 
-public Customer (String fn, String ln, String phone, MemberReg st, String cn, String date) {
+public Customer (String fn, String ln, String phone, String type, String cn, String date) {
 		
 		this.fn = fn;
 		this.ln = ln;
 		this.phone =phone;
-		this.st = st;
+		this.type = type;
 		this.cn = cn;
 		this.date =date;
 	}
 	
-	public String getName() {
+	public String getFirstName() {
 		return fn;
 	}
 	
@@ -32,8 +32,8 @@ public Customer (String fn, String ln, String phone, MemberReg st, String cn, St
 		return phone;
 	}
 	
-	public MemberReg getst() {
-		return st;
+	public String gettype() {
+		return type;
 	}
 	
 	public String getCard() {

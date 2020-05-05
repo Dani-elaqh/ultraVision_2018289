@@ -55,7 +55,7 @@ public model(){
     public void NewMember (Customer RegCustomer) {
     	try {
     		
-    		String query ="INSERT INTO members (first_name, last_name, phonenumber, cardnumber, expirationdate ) VALUES ('"+StaffLogged.getName()+"' , '"+StaffLogged.getLastName()+"' , '"+StaffLogged.getPhone()+"' ,'"+StaffLogged.getst()+"' , '"+StaffLogged.getCard()+"' , '"+StaffLogged.getdate()+"');";
+    		String query ="INSERT INTO members (first_name, last_name, phonenumber, cardnumber, expirationdate ) VALUES ('"+RegCustomer.getFirstName()+"' , '"+RegCustomer.getLastName()+"' , '"+RegCustomer.getPhone()+"' ,'"+RegCustomer.gettype()+"' , '"+RegCustomer.getCard()+"' , '"+RegCustomer.getdate()+"');";
     	
     		stmt.execute(query);
             

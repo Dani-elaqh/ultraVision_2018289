@@ -11,8 +11,8 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		
-		new MembersMenu();
-		//new controller();
+		//new MembersMenu();
+		new controller();
 	}
 	
 

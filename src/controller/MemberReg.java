@@ -13,7 +13,7 @@ public enum MemberReg {
 		this.type = type;
 	}
 	
-	public String getType() {
+	public String gettype() {
 		return this.type;
 	}
 	

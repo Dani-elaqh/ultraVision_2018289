@@ -15,12 +15,9 @@ import javax.swing.JComboBox;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.awt.SystemColor;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JList;
+
 
 public class MembersMenu extends JFrame {
 
@@ -33,6 +30,8 @@ public class MembersMenu extends JFrame {
 	private JTextField tf2;
 	private JTextField tf3;
 	private JTextField tf4;
+	
+	JComboBox <MemberReg>comboBox;
 
 		
 	
@@ -112,16 +111,17 @@ public class MembersMenu extends JFrame {
 		contentPane_1.add(tf2);
 		tf2.setColumns(10);
 		
-		//JCombobox for the enum list tyoes of members
+		//JCombobox for the enum list types of members
 		MemberReg [] list = MemberReg.values();	
-		JComboBox <MemberReg>comboBox = new JComboBox<MemberReg>();
+		comboBox = new JComboBox<MemberReg>();
 		comboBox.setSelectedItem(null);
 		comboBox.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 13));
 		comboBox.setBounds(178, 231, 116, 22);
 		contentPane_1.add(comboBox);
 		comboBox.addActionListener( (ActionListener)controllerInternalRef);
-		String type = comboBox.getSelectedItem().toString();
-		setType(type);
+		
+		
+		
 		
 		
 		//Text fields for the staff input to create a new member
@@ -164,11 +164,11 @@ public class MembersMenu extends JFrame {
 	}
 	
 
-	
-	public String getst() {
-		return  value.getText();
+	public String gettype() {
+		return  ((MemberReg)comboBox.getSelectedItem()).gettype();
 	}
-	public String getName() {
+
+	public String getFirstName() {
 		return tf.getText();
 	}
 	

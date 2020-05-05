@@ -32,7 +32,7 @@ public class StaffMenu extends JFrame {
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 798, 615);
+		setBounds(100, 100, 663, 599);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(153, 204, 255));
 		contentPane.setBorder(new MatteBorder(5, 5, 5, 5, (Color) Color.WHITE));
@@ -55,7 +55,7 @@ public class StaffMenu extends JFrame {
 		JButton btnEntertaiment = new JButton("Entertaiment");
 		btnEntertaiment.setBounds(93, 255, 279, 111);
 		btnEntertaiment.addActionListener((ActionListener)controllerInternalRef);
-		btnEntertaiment.setActionCommand("Entertaiment");
+		btnEntertaiment.setActionCommand("entertaiment");
 			
 		btnEntertaiment.setIcon(new ImageIcon("C:\\Users\\daniq\\eclipse-workspace\\Newworkspace OOC\\ultraVision_2018289\\icons\\folder-video-icon (1).png"));
 		btnEntertaiment.setHorizontalAlignment(SwingConstants.LEADING);
