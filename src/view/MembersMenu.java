@@ -25,24 +25,25 @@ import javax.swing.JList;
 public class MembersMenu extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel contentPane_1;
 	
 	private controller controllerInternalRef;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField tf;
+	private JTextField tf1;
+	private JTextField tf2;
+	private JTextField tf3;
+	private JTextField tf4;
 
+		
+	
 	public MembersMenu (controller controller) {
 		this.controllerInternalRef = controller;
-	}
-
 	
-
-	/**
-	 * Create the frame.
-	 */
+	
+	}
+	
 	public MembersMenu() {
+		
 		setTitle("Ultra Vision ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 821, 487);
@@ -51,76 +52,105 @@ public class MembersMenu extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JFrame frame = new JFrame();
+		frame.setVisible(true);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 769, 601);
+		contentPane_1 = new JPanel();
+		contentPane_1.setBorder(new EmptyBorder(5, 5, 5, 5));
+		frame.setContentPane(contentPane_1);
+
+		
+		
+		this.validate();
+		this.repaint();
+		contentPane_1.setLayout(null);
+		
 		JLabel lblName = new JLabel("Name");
 		lblName.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 15));
-		lblName.setBounds(71, 62, 69, 30);
-		contentPane.add(lblName);
+		lblName.setBounds(28, 92, 36, 19);
+		contentPane_1.add(lblName);
 		
 		JLabel lblLastName = new JLabel("Last Name");
 		lblLastName.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 15));
-		lblLastName.setBounds(71, 105, 91, 19);
-		contentPane.add(lblLastName);
+		lblLastName.setBounds(28, 139, 81, 19);
+		contentPane_1.add(lblLastName);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone number");
 		lblPhoneNumber.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 15));
-		lblPhoneNumber.setBounds(71, 147, 116, 19);
-		contentPane.add(lblPhoneNumber);
+		lblPhoneNumber.setBounds(28, 193, 108, 19);
+		contentPane_1.add(lblPhoneNumber);
 		
 		JLabel lblMemberType = new JLabel("Member Type");
 		lblMemberType.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 15));
-		lblMemberType.setBounds(71, 198, 116, 19);
-		contentPane.add(lblMemberType);
+		lblMemberType.setBounds(28, 232, 99, 19);
+		contentPane_1.add(lblMemberType);
 		
 		JLabel lblCardNumber = new JLabel("Card Number");
 		lblCardNumber.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 15));
-		lblCardNumber.setBounds(71, 244, 99, 19);
-		contentPane.add(lblCardNumber);
+		lblCardNumber.setBounds(28, 284, 99, 19);
+		contentPane_1.add(lblCardNumber);
 		
 		JLabel lblCardExpDate = new JLabel("Card Exp. Date");
 		lblCardExpDate.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 15));
-		lblCardExpDate.setBounds(71, 290, 131, 19);
-		contentPane.add(lblCardExpDate);
+		lblCardExpDate.setBounds(28, 331, 126, 19);
+		contentPane_1.add(lblCardExpDate);
 		
-		textField = new JTextField();
-		textField.setBounds(246, 67, 189, 22);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		tf= new JTextField();
+		tf.setBounds(178, 91, 116, 22);
+		contentPane_1.add(tf);
+		tf.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(246, 104, 189, 22);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		tf1 = new JTextField();
+		tf1.setBounds(178, 138, 116, 22);
+		contentPane_1.add(tf1);
+		tf1.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(244, 146, 191, 22);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		tf2 = new JTextField();
+		tf2.setBounds(178, 192, 116, 22);
+		contentPane_1.add(tf2);
+		tf2.setColumns(10);
 		
-		MemberReg [] list = MemberReg.values();		
+		//JCombobox for the enum list tyoes of members
+		MemberReg [] list = MemberReg.values();	
 		JComboBox <MemberReg>comboBox = new JComboBox<MemberReg>();
+		comboBox.setSelectedItem(null);
 		comboBox.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 13));
-		comboBox.setBounds(246, 196, 31, 22);
-		contentPane.add(comboBox);
+		comboBox.setBounds(178, 231, 116, 22);
+		contentPane_1.add(comboBox);
+		comboBox.addActionListener( (ActionListener)controllerInternalRef);
+		String type = comboBox.getSelectedItem().toString();
+		setType(type);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(246, 243, 189, 22);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(246, 289, 189, 22);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
+		//Text fields for the staff input to create a new member
+		tf3 = new JTextField();
+		tf3.setBounds(178, 283, 116, 22);
+		contentPane_1.add(tf3);
+		tf3.setColumns(10);
 		
-		JButton btnRegisterNewCustomer = new JButton("Register new customer");
-		btnRegisterNewCustomer.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 17));
-		btnRegisterNewCustomer.setBounds(158, 374, 271, 53);
-		contentPane.add(btnRegisterNewCustomer);
+		tf4 = new JTextField();
+		tf4.setBounds(178, 330, 116, 22);
+		contentPane_1.add(tf4);
+		tf4.setColumns(10);
+		
+		JButton btrc = new JButton("Register new customer");
+		btrc.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 17));
+		btrc.setBounds(51, 424, 243, 58);
+		contentPane_1.add(btrc);
+		btrc.addActionListener( (ActionListener)controllerInternalRef);
+		btrc.setActionCommand("new");
 		
 		JButton btnUpdateCustomer = new JButton("Update Customer");
 		btnUpdateCustomer.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 17));
-		btnUpdateCustomer.setBounds(567, 103, 213, 38);
-		contentPane.add(btnUpdateCustomer);
+		btnUpdateCustomer.setBounds(519, 113, 183, 29);
+		contentPane_1.add(btnUpdateCustomer);
+		
+		JLabel lblNewCustomer = new JLabel("New customer");
+		lblNewCustomer.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 16));
+		lblNewCustomer.setBounds(79, 13, 183, 39);
+		contentPane_1.add(lblNewCustomer);
 		
 		
 		
@@ -129,17 +159,15 @@ public class MembersMenu extends JFrame {
 //		contentPane_1.add(JC);
 		
 		
-//		JList<MemberReg> list = new JList();
-//		for (MemberReg a : MemberReg.values())
-//		list.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 13));
-//		list.setBounds(149, 176, 152, 23);
-//		contentPane_1.add(list);
 		
-		
-		this.validate();
-		this.repaint();
+	
 	}
 	
+
+	
+	public String getst() {
+		return  value.getText();
+	}
 	public String getName() {
 		return tf.getText();
 	}
@@ -155,17 +183,13 @@ public class MembersMenu extends JFrame {
 		return tf2.getText();
 	}
 	
-	public String getMember() {
+	public String getCard() {
 		 return tf3.getText();
 	}
 	
-	public String getCard() {
+	public String getdate() {
 		return tf4.getText();
 	}
 	
-	public String getdate() {
-		
-		return tf5.getText();
-		
-	}
+	
 }

@@ -32,6 +32,10 @@ public Customer (String fn, String ln, String phone, MemberReg st, String cn, St
 		return phone;
 	}
 	
+	public MemberReg getst() {
+		return st;
+	}
+	
 	public String getCard() {
 		return cn;
 	}

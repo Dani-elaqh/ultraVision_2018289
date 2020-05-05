@@ -52,7 +52,7 @@ public model(){
     
     // This method is only in charge of asking the DB if a user exists
     // Notice that it is using the variables initialized by the constructor
-    public void NewMember (Customer StaffLogged) {
+    public void NewMember (Customer RegCustomer) {
     	try {
     		
     		String query ="INSERT INTO members (first_name, last_name, phonenumber, cardnumber, expirationdate ) VALUES ('"+StaffLogged.getName()+"' , '"+StaffLogged.getLastName()+"' , '"+StaffLogged.getPhone()+"' ,'"+StaffLogged.getst()+"' , '"+StaffLogged.getCard()+"' , '"+StaffLogged.getdate()+"');";

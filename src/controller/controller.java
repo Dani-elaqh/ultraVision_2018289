@@ -26,12 +26,17 @@ public class controller implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-				
+		String fn = members.getName();
+		String ln = members.getLastName();
+		String phone = members.getPhone();
+		String st = members.getMember();
+		String cn = members.getCard();
+		String date = members.getdate();
 		
-
+		
 		if(e.getActionCommand().equals("Members")) {
 			 members = new MembersMenu();
-			members.dispose();
+			 members.dispose();
 		}
 		
 		
