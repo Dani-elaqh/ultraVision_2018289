@@ -7,9 +7,7 @@ public enum MemberReg {
 	TvLover("Box Sets"),
 	Premium("Sky is the limit");
 	
-	private String type;
-
-	 
+	private String type;	 
 	
 	MemberReg(String type){
 		this.type = type;
@@ -18,6 +16,11 @@ public enum MemberReg {
 	public String getType() {
 		return this.type;
 	}
+	
+	
+	
+	
+	
 	
 	
 	

@@ -34,6 +34,10 @@ public class controller implements ActionListener{
 			members.dispose();
 		}
 		
+		
+		else if (e.getActionCommand().equals("Reg")) {
+			
+		}
 		}
 	}
 

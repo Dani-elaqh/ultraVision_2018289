@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.SystemColor;
 
 public class StaffMenu extends JFrame {
 
@@ -31,10 +32,10 @@ public class StaffMenu extends JFrame {
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 823, 742);
+		setBounds(100, 100, 798, 615);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(153, 204, 255));
-		contentPane.setBorder(new MatteBorder(5, 5, 5, 5, (Color) new Color(123, 104, 238)));
+		contentPane.setBorder(new MatteBorder(5, 5, 5, 5, (Color) Color.WHITE));
 		setContentPane(contentPane);
 		
 		JButton btnCust = new JButton("Members");
@@ -59,7 +60,7 @@ public class StaffMenu extends JFrame {
 		btnEntertaiment.setIcon(new ImageIcon("C:\\Users\\daniq\\eclipse-workspace\\Newworkspace OOC\\ultraVision_2018289\\icons\\folder-video-icon (1).png"));
 		btnEntertaiment.setHorizontalAlignment(SwingConstants.LEADING);
 		btnEntertaiment.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 18));
-		btnEntertaiment.setBackground(new Color(224, 255, 255));
+		btnEntertaiment.setBackground(Color.WHITE);
 		contentPane.add(btnEntertaiment);
 		
 		JButton btnSearch = new JButton("Search");
@@ -67,7 +68,7 @@ public class StaffMenu extends JFrame {
 		btnSearch.setIcon(new ImageIcon("C:\\Users\\daniq\\eclipse-workspace\\Newworkspace OOC\\ultraVision_2018289\\icons\\Search-icon.png"));
 		btnSearch.setHorizontalAlignment(SwingConstants.LEADING);
 		btnSearch.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 18));
-		btnSearch.setBackground(new Color(224, 255, 255));
+		btnSearch.setBackground(Color.WHITE);
 		contentPane.add(btnSearch);
 		btnSearch.addActionListener((ActionListener)controllerInternalRef);
 		btnSearch.setActionCommand("Search");
@@ -88,4 +89,6 @@ public class StaffMenu extends JFrame {
 		this.validate();
 	    this.repaint();
 	}
+	
+	
 }
