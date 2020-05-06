@@ -1,5 +1,6 @@
 import controller.controller;
-import view.MembersMenu;
+
+
 
 
 public class Main {
@@ -13,6 +14,7 @@ public class Main {
 		
 		//new MembersMenu();
 		new controller();
+		
 	}
 	
 

@@ -39,20 +39,21 @@ public class MembersMenu extends JFrame {
 		this.controllerInternalRef = controller;
 	
 	
-	}
-	
-	public MembersMenu() {
-		
-		setTitle("Ultra Vision ");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 821, 487);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+
 		
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
+		frame.setTitle("");
+		
+		frame.setTitle("Ultra Vision ");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 821, 487);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		frame.setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 769, 601);
@@ -62,8 +63,7 @@ public class MembersMenu extends JFrame {
 
 		
 		
-		this.validate();
-		this.repaint();
+		
 		contentPane_1.setLayout(null);
 		
 		JLabel lblName = new JLabel("Name");
@@ -158,7 +158,8 @@ public class MembersMenu extends JFrame {
 //		JComboBox <String> JC = new JComboBox <String> (list);
 //		contentPane_1.add(JC);
 		
-		
+		frame.validate();
+		frame.repaint();
 		
 	
 	}

@@ -10,7 +10,7 @@ public class Customer {
 	private String date;
 	
 
-public Customer (String fn, String ln, String phone, String type, String cn, String date) {
+	public Customer (String fn, String ln, String phone, String type, String cn, String date) {
 		
 		this.fn = fn;
 		this.ln = ln;

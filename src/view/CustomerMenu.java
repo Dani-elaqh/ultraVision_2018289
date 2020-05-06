@@ -33,19 +33,23 @@ public class CustomerMenu extends JFrame {
 	 */
 	public CustomerMenu (controller controller) {
 		this.controllerInternalRef = controller;
+		
 	
-	
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public CustomerMenu() {
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(100, 100, 874, 634);
+//	}
+//
+//	/**
+//	 * Create the frame.
+//	 */
+//	public CustomerMenu() {
+		
+		JFrame frame = new JFrame();
+		frame.setVisible(true);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 874, 634);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		this.setContentPane(contentPane);
+		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		this.setVisible(true);
 		this.validate();
@@ -102,7 +106,7 @@ public class CustomerMenu extends JFrame {
 		contentPane.add(tf4);
 		tf4.setColumns(10);
 		
-		JLabel lblRegsiterNewCustomer = new JLabel("Regsiter new Customer");
+		JLabel lblRegsiterNewCustomer = new JLabel("Register new Customer");
 		lblRegsiterNewCustomer.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 16));
 		lblRegsiterNewCustomer.setBounds(63, 24, 245, 33);
 		contentPane.add(lblRegsiterNewCustomer);
@@ -121,6 +125,9 @@ public class CustomerMenu extends JFrame {
 		textField.setBounds(171, 75, 137, 22);
 		contentPane.add(textField);
 		textField.setColumns(10);
+		
+		frame.validate();
+		frame.repaint();
 	
 	}
 	
