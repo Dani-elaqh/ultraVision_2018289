@@ -15,6 +15,8 @@ public class MemberController implements ActionListener {
 
 	public MemberController() {
 		this.customers = new CustomerMenu(this);
+		model = new model ();
+		
 	}
 
 	@Override
@@ -34,6 +36,7 @@ public class MemberController implements ActionListener {
 		
 		if(action.getActionCommand().equals("Members")) {
 		
+			
 			
 		
 		boolean newCustomer = model.register(regCustomer);
