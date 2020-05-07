@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controller.controller;
+import controller.MenuController;
 
 import javax.swing.JButton;
 import java.awt.Font;
@@ -17,9 +17,9 @@ import java.awt.event.ActionListener;
 public class Menu extends JFrame {
 
 	private JPanel contentPane;
-	private controller controllerInternalRef;
+	private MenuController controllerInternalRef;
 	
-	public Menu(controller controllerInternalRef) {
+	public Menu(MenuController controllerInternalRef) {
 		
 		
 		
@@ -48,7 +48,7 @@ public class Menu extends JFrame {
 		enterbt.setBounds(451, 187, 189, 57);
 		contentPane.add(enterbt);
 		enterbt.addActionListener((ActionListener)controllerInternalRef);
-		enterbt.setActionCommand("Members");
+		enterbt.setActionCommand("entertaiment");
 		
 		frame.validate();
 		frame.repaint();

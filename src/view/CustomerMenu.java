@@ -1,8 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,10 +7,14 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+
+import controller.MemberController;
 import controller.MemberReg;
-import controller.controller;
+import controller.MenuController;
 
 import java.awt.Font;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class CustomerMenu extends JFrame {
@@ -25,22 +26,14 @@ public class CustomerMenu extends JFrame {
 	private JTextField tf3;
 	private JTextField tf4;
 	JComboBox <MemberReg>comboBox;
-	private controller controllerInternalRef;
+	private MemberController controllerInternalRef;
 	private JTextField textField;
 
-	/**
-	 * Launch the application.
-	 */
-	public CustomerMenu (controller controller) {
+
+	public CustomerMenu (MemberController controller) {
 		this.controllerInternalRef = controller;
 		
-	
-//	}
-//
-//	/**
-//	 * Create the frame.
-//	 */
-//	public CustomerMenu() {
+//Window to display the the options to add or update a customer
 		
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
@@ -64,7 +57,7 @@ public class CustomerMenu extends JFrame {
 		lblLastName.setBounds(50, 116, 91, 25);
 		contentPane.add(lblLastName);
 		
-		JLabel lblPhone = new JLabel("Phone");
+		JLabel lblPhone = new JLabel("Email");
 		lblPhone.setBounds(50, 154, 91, 25);
 		contentPane.add(lblPhone);
 		
@@ -115,11 +108,15 @@ public class CustomerMenu extends JFrame {
 		btnRegister.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 16));
 		btnRegister.setBounds(97, 397, 156, 49);
 		contentPane.add(btnRegister);
+		btnRegister.addActionListener((ActionListener)controller);
+		btnRegister.setActionCommand("Members");
 		
 		JButton btnUpdateCustomer = new JButton("Update Customer");
 		btnUpdateCustomer.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 13));
 		btnUpdateCustomer.setBounds(516, 134, 283, 65);
 		contentPane.add(btnUpdateCustomer);
+		btnUpdateCustomer.addActionListener((ActionListener)controller);
+		btnUpdateCustomer.setActionCommand("update");
 		
 		textField = new JTextField();
 		textField.setBounds(171, 75, 137, 22);
@@ -144,8 +141,7 @@ public class CustomerMenu extends JFrame {
 	public String gettype() {
 		return  ((MemberReg)comboBox.getSelectedItem()).gettype();
 	}
-	public String getPhone() {
-		
+	public String getEmail() {	
 		return tf2.getText();
 	}
 	

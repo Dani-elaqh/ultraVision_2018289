@@ -4,44 +4,64 @@ public class Customer {
 	
 	private String fn;
 	private String ln;
-	private String phone;
+	private String Email;
 	private String type;
-	private String cn;
+	private String Card;
 	private String date;
 	
 
-	public Customer (String fn, String ln, String phone, String type, String cn, String date) {
+	public Customer (String fn, String ln, String email, String type, String Card, String date) {
 		
 		this.fn = fn;
 		this.ln = ln;
-		this.phone =phone;
+		this.Email = email;
 		this.type = type;
-		this.cn = cn;
+		this.Card = Card;
 		this.date =date;
 	}
 	
 	public String getFirstName() {
-		return fn;
+		return this.fn;
 	}
 	
 	public String getLastName() {
-		return ln;
+		return this.ln;
 	}
 	
-	public String getPhone() {
-		return phone;
+	public String getEmail() {
+		return this.Email;
+	}
+	
+	
+	public String getCard() {
+		return this.Card;
+	}
+	
+	public String getDate() {
+		return this.date;
+	}
+	public boolean isEmail(String Email) {
+		
+		
+		boolean isEmail = Email.matches("\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b");
+		System.out.println(isEmail);
+		return isEmail;
+		
 	}
 	
 	public String gettype() {
 		return type;
 	}
 	
-	public String getCard() {
-		return cn;
+	public boolean isCard (String Card) {
+		
+		return Card.matches("(\\d{4}[-. ]?){4}|\\d{4}[-. ]?\\d{6}[-. ]?\\d{5}");
+		
 	}
 	
-	public String getdate() {
-		return date;
+	public boolean isDate (String date) {
+		
+		return date.matches("(\\d\\d\\/\\d{2}\\W");
 	}
 	
 }
