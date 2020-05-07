@@ -27,8 +27,9 @@ public class EntertainmentController implements ActionListener {
 			new MusicController();
 		}
 		
-		else if(e.getActionCommand().equals("concert")) {
+		else if(e.getActionCommand().equals("movie")) {
 			
+			new MovieController();
 			
 		}
 		

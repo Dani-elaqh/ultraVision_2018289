@@ -15,43 +15,36 @@ public class MemberController implements ActionListener {
 
 	public MemberController() {
 		this.customers = new CustomerMenu(this);
-		model = new model ();
-		
+		model = new model();
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent action) {
-		
-			String fn = this.customers.getFirstName();
-			String ln = this.customers.getLastName();
-			String email = this.customers.getEmail();
-			String type = this.customers.gettype();
-			String cn = this.customers.getCard();
-			String date = this.customers.getdate();
-			Customer regCustomer = new Customer(fn, ln, email, type, cn, date);
-		
-		
-		// Ask the model if the user is valid
-		// we need to update this
-		
-		if(action.getActionCommand().equals("Members")) {
-		
-			
-			
-		
-		boolean newCustomer = model.register(regCustomer);
-		
-		if (newCustomer == true) {
-			
-			JOptionPane.showMessageDialog(null, "New Customer " + fn + " Sucessfully Created!");
-		}
-		
-		else {
-			JOptionPane.showMessageDialog(null, "Something went wrong. Please try again");
-		}
-		
-		
-		
+
+		String fn = this.customers.getFirstName();
+		String ln = this.customers.getLastName();
+		String email = this.customers.getEmail();
+		String type = this.customers.gettype();
+		String cn = this.customers.getCard();
+		String date = this.customers.getdate();
+		Customer regCustomer = new Customer(fn, ln, email, type, cn, date);
+
+		//if the new registration of the new customer is true happy to add new one
+
+		if (action.getActionCommand().equals("Members")) {
+
+			boolean newCustomer = model.register(regCustomer);
+
+			if (newCustomer == true) {
+
+				JOptionPane.showMessageDialog(null, "New Customer " + fn + " Sucessfully Created!");
+			}
+
+			else {
+				JOptionPane.showMessageDialog(null, "Something went wrong. Please try again");
+			}
+
 		}
 	}
 

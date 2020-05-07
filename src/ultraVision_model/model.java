@@ -10,6 +10,8 @@ import java.util.logging.Logger;
 
 import controller.Customer;
 import controller.MemberReg;
+import controller.Movies;
+import controller.Music;
 import controller.Staff;
 
 public class model {
@@ -53,7 +55,7 @@ public class model {
 	// This method is only in charge of asking the DB if a user exists
 	// Notice that it is using the variables initialized by the constructor
 
-	// method for insertinf data into the data base
+	// method for inserting data into the data base, for the members table
 	public boolean register(Customer regCustomer) {
 
 		new model();
@@ -154,6 +156,143 @@ public class model {
 		return data;
 	}
 
+	public boolean regMusic(Music addMusic) {
+
+		boolean newMusic = false;
+		new model();
+
+		// query to insert into the database for the new music title
+		try {
+
+			String query = "INSERT INTO music (Artist, Title, year_Of_Realease, rented) " + "VALUES ( '"
+					+ addMusic.getArtist() + "', '" + addMusic.getTitle() + "', '" + addMusic.getYear() + "', '"
+					+ addMusic.getRented() + "');";
+			stmt.execute(query);
+
+			newMusic = true;
+
+			closings();
+		}
+
+		catch (SQLException se) {
+			System.out.println("SQL Exception:");
+
+			while (se != null) {
+				System.out.println("State  : " + se.getSQLState());
+				System.out.println("Message: " + se.getMessage());
+				System.out.println("Error  : " + se.getErrorCode());
+
+				se = se.getNextException();
+
+			}
+		}
+
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return newMusic;
+	}
+
+	public String[][] movie() {
+		
+		boolean rented = false;
+		// Creating an array that we can return later
+		String[][] data = null;
+		try {
+
+			String query = "SELECT * FROM movies WHERE rented = '" + rented + "'";
+
+			// Get a connection to the database
+			String[] columnNames = new String[] { "Movie ID", "Director", "Title", "Year of Release", "Genre", "Rented" };
+
+			// Get a statement from the connection
+			Statement stmt = conn.createStatement();
+
+			// Execute the query
+			ResultSet rs = stmt.executeQuery(query);
+
+			// Instantiating the array
+			data = new String[100][columnNames.length];
+			// Creating a counter to keep track of the
+			// row we're on
+			int row = 0;
+
+			// Loop through the result set
+			while (rs.next()) {
+				// this is printing the console
+
+				// adding the data to an array
+				data[row][0] = rs.getString("MovieID");
+				data[row][1] = rs.getString("Director");
+				data[row][2] = rs.getString("Title");
+				data[row][3] = rs.getString("year_Of_Realease");
+				data[row][4] = rs.getString("Genre");
+				data[row][5] = rs.getString("rented");
+
+				// go the the next row"
+				row++;
+			}
+
+			// Close the result set, statement and the connection
+			rs.close();
+			stmt.close();
+			conn.close();
+		} catch (SQLException se) {
+			System.out.println("SQL Exception:");
+
+			// Loop through the SQL Exceptions
+			while (se != null) {
+				System.out.println("State  : " + se.getSQLState());
+				System.out.println("Message: " + se.getMessage());
+				System.out.println("Error  : " + se.getErrorCode());
+
+				se = se.getNextException();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		// Returning the array of data
+		return data;
+	}
+	
+	public boolean regMovie(Movies addMovie) {
+
+		boolean newMovie = false;
+		new model();
+
+		// query to insert into the database for the new music title
+		try {
+
+			String query = "INSERT INTO music (Director, Title, year_Of_Realease, Genre, rented) " + "VALUES ( '"
+					+ addMovie.getDir() + "', '" + addMovie.getTitle() + "', '" + addMovie.getYear() + "', '"
+					+ addMovie.getGenre()+ "' , '"	+ addMovie.getRent() + "');";
+			stmt.execute(query);
+
+			newMovie = true;
+
+			closings();
+		}
+
+		catch (SQLException se) {
+			System.out.println("SQL Exception:");
+
+			while (se != null) {
+				System.out.println("State  : " + se.getSQLState());
+				System.out.println("Message: " + se.getMessage());
+				System.out.println("Error  : " + se.getErrorCode());
+
+				se = se.getNextException();
+
+			}
+		}
+
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return newMovie;
+	}
+	
 	public String[][] updatecustomer() {
 
 		// Creating an array that we can return later
