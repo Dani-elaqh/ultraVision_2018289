@@ -38,7 +38,7 @@ public class MovieController implements ActionListener{
 
 				if (newMovie == true) {
 					//if success new artist added
-					JOptionPane.showMessageDialog(null, "New movie " + title + " Sucessfully Created!");
+					JOptionPane.showMessageDialog(null, "New movie " + title + " Sucessfully added!");
 				}
 				
 				//if something goes wrong user knows , should try again 

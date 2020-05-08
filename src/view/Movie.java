@@ -1,13 +1,10 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controller.MemberReg;
 import controller.MovieController;
 import controller.Rent;
 import ultraVision_model.model;
@@ -48,8 +45,7 @@ public class Movie extends JFrame {
 		JFrame frame = new JFrame();
 
 		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 1140, 506);
+		frame.setBounds(100, 100, 1136, 571);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
@@ -66,16 +62,16 @@ public class Movie extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane_1.setViewportView(scrollPane);
 
-		String[] columnNames = { "MovieID", "Director", "Title", "Year of release", "Genre" };
+		String[] columnNames = { "MovieID", "Director", "Title", "Year of release", "Genre", "Rented" };
 		String[][] data = new String[100][columnNames.length];
 
 		// database connection in model class
 		model jdbc = new model();
 
 		// gathering the data
-		data = jdbc.music();
+		data = jdbc.movie();
 		
-		table = new JTable();
+		table = new JTable(data, columnNames);
 		scrollPane.setViewportView(table);
 
 		lbltitle = new JLabel("Title");
@@ -124,8 +120,8 @@ public class Movie extends JFrame {
 
 		JButton btnadd = new JButton("Add new Movie");
 		btnadd.setBackground(SystemColor.activeCaption);
-		btnadd.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 16));
-		btnadd.setBounds(784, 343, 163, 35);
+		btnadd.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 16));
+		btnadd.setBounds(784, 343, 184, 35);
 		contentPane.add(btnadd);
 		btnadd .addActionListener((ActionListener)controller);
 		btnadd .setActionCommand("new");
@@ -137,7 +133,7 @@ public class Movie extends JFrame {
 		
 		comboBox = new JComboBox<Rent>();
 		comboBox.setModel(new DefaultComboBoxModel(Rent.values()));
-		comboBox.setBounds(1057, 297, 31, 22);
+		comboBox.setBounds(999, 297, 89, 22);
 		contentPane.add(comboBox);
 		
 		frame.validate();

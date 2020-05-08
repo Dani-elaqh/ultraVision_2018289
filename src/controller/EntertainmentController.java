@@ -8,32 +8,40 @@ import view.Menu;
 import view.MusicTable;
 
 public class EntertainmentController implements ActionListener {
-	
+
 	Entertaiment entertainment;
-	
-	
+
 	public EntertainmentController() {
 
 		entertainment = new Entertaiment(this);
 
 	}
 
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		if(e.getActionCommand().equals("music")) {
-			
+
+		if (e.getActionCommand().equals("music")) {
+
 			new MusicController();
 		}
-		
-		else if(e.getActionCommand().equals("movie")) {
-			
+
+		else if (e.getActionCommand().equals("movie")) {
+
 			new MovieController();
-			
+
+		}
+
+		else if (e.getActionCommand().equals("concert")) {
+
+			new ConcertController();
+
 		}
 		
-		
+		else if (e.getActionCommand().equals("box")) {
+
+			new BoxController();
+
+		}
 	}
 
 }
