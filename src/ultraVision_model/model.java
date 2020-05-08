@@ -8,12 +8,15 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import controller.Box;
 import controller.Concert;
 import controller.Customer;
 import controller.MemberReg;
 import controller.Movies;
 import controller.Music;
 import controller.Staff;
+import controller.UpdateCustomer;
+
 
 public class model {
 
@@ -94,6 +97,45 @@ public class model {
 		}
 		return newCustomer;
 	}
+	
+	
+	 public boolean updateN(UpdateCustomer custUpdated){
+		 
+		 new model();
+
+			boolean update = false;
+	        
+	        try{
+	            // Building the query 
+	            String query = "UPDATE members SET first_name='" + custUpdated.getName() + "', last_name = '" + custUpdated.getLname() + "' , email ='"
+	            		+ custUpdated.getMail() + "', membertype = '" + custUpdated.getMember() + "' , cardNumber = '" + custUpdated.getCardN() + "', card_expirationdate = '" + custUpdated.getExpDate() 
+	            		+ "' WHERE MemberID = '" + custUpdated.getId() + "' ";
+
+	            // Execute the query
+	            stmt.execute(query) ;
+	            update = true;
+
+	            // Calling the method in charge of closing the connections
+	            closings();
+	        }
+	        catch( SQLException se ){
+	            System.out.println( "SQL Exception:" ) ;
+
+	            // Loop through the SQL Exceptions
+	            while( se != null ){
+	                System.out.println( "State  : " + se.getSQLState()  ) ;
+	                System.out.println( "Message: " + se.getMessage()   ) ;
+	                System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+	                se = se.getNextException() ;
+	            }
+	        }
+	        catch( Exception e ){
+	                System.out.println( e ) ;
+	        }
+
+	        return update;
+	    }
 
 	// method to show the table off music that is inside the database
 	public String[][] music() {
@@ -195,7 +237,7 @@ public class model {
 	}
 
 	public String[][] movie() {
-		
+
 		boolean rented = false;
 		// Creating an array that we can return later
 		String[][] data = null;
@@ -204,7 +246,8 @@ public class model {
 			String query = "SELECT * FROM movies WHERE rented = '" + rented + "'";
 
 			// Get a connection to the database
-			String[] columnNames = new String[] { "Movie ID", "Director", "Title", "Year of Release", "Genre", "Rented" };
+			String[] columnNames = new String[] { "Movie ID", "Director", "Title", "Year of Release", "Genre",
+					"Rented" };
 
 			// Get a statement from the connection
 			Statement stmt = conn.createStatement();
@@ -256,7 +299,7 @@ public class model {
 		// Returning the array of data
 		return data;
 	}
-	
+
 	public boolean regMovie(Movies addMovie) {
 
 		boolean newMovie = false;
@@ -267,7 +310,7 @@ public class model {
 
 			String query = "INSERT INTO music (Director, Title, year_Of_Realease, Genre, rented) " + "VALUES ( '"
 					+ addMovie.getDir() + "', '" + addMovie.getTitle() + "', '" + addMovie.getYear() + "', '"
-					+ addMovie.getGenre()+ "' , '"	+ addMovie.getRent() + "');";
+					+ addMovie.getGenre() + "' , '" + addMovie.getRent() + "');";
 			stmt.execute(query);
 
 			newMovie = true;
@@ -293,9 +336,9 @@ public class model {
 		}
 		return newMovie;
 	}
-	
-public String[][] concert() {
-		
+
+	public String[][] concert() {
+
 		boolean rented = false;
 		// Creating an array that we can return later
 		String[][] data = null;
@@ -304,7 +347,8 @@ public String[][] concert() {
 			String query = "SELECT * FROM liveconcert WHERE rented = '" + rented + "'";
 
 			// Get a connection to the database
-			String[] columnNames = new String[] { "LiveID", "Title", "Artist", "Year of Release", "Genre", "Rented", "Format" };
+			String[] columnNames = new String[] { "LiveID", "Title", "Artist", "Year of Release", "Genre", "Rented",
+					"Format" };
 
 			// Get a statement from the connection
 			Statement stmt = conn.createStatement();
@@ -329,7 +373,7 @@ public String[][] concert() {
 				data[row][3] = rs.getString("year_Of_Realease");
 				data[row][4] = rs.getString("Genre");
 				data[row][5] = rs.getString("Rented");
-				data[row][6] = rs.getString("Format");	
+				data[row][6] = rs.getString("Format");
 
 				// go the the next row"
 				row++;
@@ -357,117 +401,56 @@ public String[][] concert() {
 		// Returning the array of data
 		return data;
 	}
-	
-public boolean regConcert(Concert addLive) {
 
-	boolean newLive = false;
-	new model();
+	public boolean regConcert(Concert addLive) {
 
-	// query to insert into the database for the new music title
-	try {
+		boolean newLive = false;
+		new model();
 
-		String query = "INSERT INTO liveconcert (Title, Artist, year_Of_Realease, Genre, Rented, Format ) " + "VALUES ( '"
-				+ addLive.getTitle() + "', '" + addLive.getArtist() + "', '" + addLive.getYear() + "', '"
-				+ addLive.getGenre()+ "' , '"	+ addLive.getRented() + "', '" + addLive.getFormat()+ "');";
-		stmt.execute(query);
-
-		newLive = true;
-
-		closings();
-	}
-
-	catch (SQLException se) {
-		System.out.println("SQL Exception:");
-
-		while (se != null) {
-			System.out.println("State  : " + se.getSQLState());
-			System.out.println("Message: " + se.getMessage());
-			System.out.println("Error  : " + se.getErrorCode());
-
-			se = se.getNextException();
-
-		}
-	}
-
-	catch (Exception e) {
-		System.out.println(e);
-	}
-	return newLive;
-}
-
-public String[][] box() {
-	
-	boolean rented = false;
-	// Creating an array that we can return later
-	String[][] data = null;
-	try {
-
-		String query = "SELECT * FROM tvbox WHERE rented = '" + rented + "'";
-
-		// Get a connection to the database
-		String[] columnNames = new String[] { "BoxID", "Title", "Season" , "Genre", "Rented"};
-
-		// Get a statement from the connection
-		Statement stmt = conn.createStatement();
-
-		// Execute the query
-		ResultSet rs = stmt.executeQuery(query);
-
-		// Instantiating the array
-		data = new String[100][columnNames.length];
-		// Creating a counter to keep track of the
-		// row we're on
-		int row = 0;
-
-		// Loop through the result set
-		while (rs.next()) {
-			// this is printing the console
-
-			// adding the data to an array
-			data[row][0] = rs.getString("BoxID");
-			data[row][1] = rs.getString("Title");
-			data[row][2] = rs.getString("Season");	
-			data[row][3] = rs.getString("Genre");
-			data[row][4] = rs.getString("Rented");
-			
-
-			// go the the next row"
-			row++;
-		}
-
-		// Close the result set, statement and the connection
-		rs.close();
-		stmt.close();
-		conn.close();
-		
-	} catch (SQLException se) {
-		System.out.println("SQL Exception:");
-
-		// Loop through the SQL Exceptions
-		while (se != null) {
-			System.out.println("State  : " + se.getSQLState());
-			System.out.println("Message: " + se.getMessage());
-			System.out.println("Error  : " + se.getErrorCode());
-
-			se = se.getNextException();
-		}
-	} catch (Exception e) {
-		System.out.println(e);
-	}
-
-	// Returning the array of data
-	return data;
-}
-	public String[][] updatecustomer() {
-
-		// Creating an array that we can return later
-		String[][] data = null;
-
+		// query to insert into the database for the new live concert title
 		try {
 
-			String query = "SELECT * FROM members";
+			String query = "INSERT INTO liveconcert (Title, Artist, year_Of_Realease, Genre, Rented, Format ) "
+					+ "VALUES ( '" + addLive.getTitle() + "', '" + addLive.getArtist() + "', '" + addLive.getYear()
+					+ "', '" + addLive.getGenre() + "' , '" + addLive.getRented() + "', '" + addLive.getFormat()
+					+ "');";
+			stmt.execute(query);
+
+			newLive = true;
+
+			closings();
+		}
+
+		catch (SQLException se) {
+			System.out.println("SQL Exception:");
+
+			while (se != null) {
+				System.out.println("State  : " + se.getSQLState());
+				System.out.println("Message: " + se.getMessage());
+				System.out.println("Error  : " + se.getErrorCode());
+
+				se = se.getNextException();
+
+			}
+		}
+
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return newLive;
+	}
+
+	public String[][] box() {
+
+		boolean rented = false;
+		// Creating an array that we can return later
+		String[][] data = null;
+		try {
+
+			String query = "SELECT * FROM tvbox WHERE rented = '" + rented + "'";
 
 			// Get a connection to the database
+			String[] columnNames = new String[] { "BoxID", "Title", "Season", "Genre", "Rented" };
 
 			// Get a statement from the connection
 			Statement stmt = conn.createStatement();
@@ -476,7 +459,7 @@ public String[][] box() {
 			ResultSet rs = stmt.executeQuery(query);
 
 			// Instantiating the array
-			data = new String[100][4];
+			data = new String[100][columnNames.length];
 			// Creating a counter to keep track of the
 			// row we're on
 			int row = 0;
@@ -484,20 +467,15 @@ public String[][] box() {
 			// Loop through the result set
 			while (rs.next()) {
 				// this is printing the console
-				System.out.println(rs.getString("MemberID") + "\t" + rs.getString("firts_name") + "\t"
-						+ rs.getString("last_name") + "\t" + rs.getString("email") + "\t" + rs.getString("membertype")
-						+ "\t" + rs.getString("cardNumber") + "\t" + rs.getString("card_expirationdate"));
 
 				// adding the data to an array
-				data[row][0] = rs.getString("LiveID");
+				data[row][0] = rs.getString("BoxID");
 				data[row][1] = rs.getString("Title");
-				data[row][2] = rs.getString("Artist");
-				data[row][3] = rs.getString("year_Of_Realease");
-				data[row][4] = rs.getString("Genre");
-				data[row][5] = rs.getString("Rented");
-				data[row][6] = rs.getString("Format");
+				data[row][2] = rs.getString("Season");
+				data[row][3] = rs.getString("Genre");
+				data[row][4] = rs.getString("Rented");
 
-				// go the the next row
+				// go the the next row"
 				row++;
 			}
 
@@ -505,6 +483,7 @@ public String[][] box() {
 			rs.close();
 			stmt.close();
 			conn.close();
+
 		} catch (SQLException se) {
 			System.out.println("SQL Exception:");
 
@@ -524,6 +503,43 @@ public String[][] box() {
 		return data;
 	}
 
+	public boolean regBox(Box addTv) {
+
+		boolean newBox = false;
+		new model();
+
+		// query to insert into the database for the new tv box title
+		try {
+
+			String query = "INSERT INTO tvbox (Title, Season, Genre, Rented ) " + "VALUES ( '" + addTv.getTitle()
+					+ "', '" + addTv.getSeason() + "' , '" + addTv.getGenre() + "', '" + addTv.getRented() + "');";
+			stmt.execute(query);
+
+			newBox = true;
+
+			closings();
+		}
+
+		catch (SQLException se) {
+			System.out.println("SQL Exception:");
+
+			while (se != null) {
+				System.out.println("State  : " + se.getSQLState());
+				System.out.println("Message: " + se.getMessage());
+				System.out.println("Error  : " + se.getErrorCode());
+
+				se = se.getNextException();
+
+			}
+		}
+
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return newBox;
+	}
+
+	
 	private void closings() {
 
 		try {

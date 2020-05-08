@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import ultraVision_model.model;
 import view.Movie;
 
+//This class is in charge of taking the users input to save a new 
+// movie title into the data base for the movie table
 public class MovieController implements ActionListener{
 
 	Movie movie;

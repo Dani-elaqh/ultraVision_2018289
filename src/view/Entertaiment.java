@@ -1,17 +1,15 @@
 package view;
 
-
+//This class is in charge of the entertainment Menu, so far the user has 4 options to see the records for each table 
+//or the user can add new titles to the tables
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.EntertainmentController;
-import controller.MenuController;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 public class Entertaiment extends JFrame {
