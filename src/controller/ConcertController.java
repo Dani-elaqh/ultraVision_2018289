@@ -1,5 +1,6 @@
 package controller;
 
+//Class that controls the display of the live concert table and the insertion of new titles 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

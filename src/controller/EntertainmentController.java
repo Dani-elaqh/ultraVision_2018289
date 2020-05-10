@@ -18,10 +18,10 @@ public class EntertainmentController implements ActionListener {
 
 	}
 
-	//implementing the method for the actions 
+	// implementing the method for the actions
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+//Calling the relevant controllers for each button
 		if (e.getActionCommand().equals("music")) {
 
 			new MusicController();
@@ -38,7 +38,7 @@ public class EntertainmentController implements ActionListener {
 			new ConcertController();
 
 		}
-		
+
 		else if (e.getActionCommand().equals("box")) {
 
 			new BoxController();

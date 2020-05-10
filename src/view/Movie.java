@@ -1,5 +1,6 @@
 package view;
 
+//Class in charge to display the movie table options, display the table and adding new titles
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,8 +21,12 @@ import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class Movie extends JFrame {
+
+	// Global variables
 
 	private JPanel contentPane;
 	private JTable table;
@@ -37,23 +42,27 @@ public class Movie extends JFrame {
 	private JTextField tfyear;
 	private JTextField tfgenre;
 	private JLabel lbrent;
-	JComboBox <Rent>comboBox;
+	JComboBox<Rent> comboBox;
 
 	public Movie(MovieController controller) {
+		// Reference of the controller locally
 		this.controllerInternalRef = controller;
 
+		// Attributes and components of this window
 		JFrame frame = new JFrame();
 
 		frame.setVisible(true);
 		frame.setBounds(100, 100, 1136, 571);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.inactiveCaptionBorder);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		lblMovies = new JLabel("Movies");
-		lblMovies.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 16));
-		lblMovies.setBounds(297, 13, 66, 20);
+		lblMovies.setForeground(new Color(128, 0, 128));
+		lblMovies.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 20));
+		lblMovies.setBounds(445, 13, 84, 20);
 		contentPane.add(lblMovies);
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(12, 51, 632, 356);
@@ -61,6 +70,8 @@ public class Movie extends JFrame {
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane_1.setViewportView(scrollPane);
+
+		//
 
 		String[] columnNames = { "MovieID", "Director", "Title", "Year of release", "Genre", "Rented" };
 		String[][] data = new String[100][columnNames.length];
@@ -70,7 +81,8 @@ public class Movie extends JFrame {
 
 		// gathering the data
 		data = jdbc.movie();
-		
+
+		// Sending the arrays to the table
 		table = new JTable(data, columnNames);
 		scrollPane.setViewportView(table);
 
@@ -119,44 +131,48 @@ public class Movie extends JFrame {
 		contentPane.add(tfgenre);
 
 		JButton btnadd = new JButton("Add new Movie");
+		btnadd.setForeground(new Color(0, 0, 0));
+		btnadd.setBorder(new LineBorder(new Color(100, 149, 237), 3, true));
 		btnadd.setBackground(SystemColor.activeCaption);
 		btnadd.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 16));
-		btnadd.setBounds(784, 343, 184, 35);
+		btnadd.setBounds(781, 361, 195, 46);
 		contentPane.add(btnadd);
-		btnadd .addActionListener((ActionListener)controller);
-		btnadd .setActionCommand("new");
-		
-		lbrent = new JLabel("Rented");
+		btnadd.addActionListener((ActionListener) controller);
+		btnadd.setActionCommand("new");
+
+		lbrent = new JLabel("For Rent");
 		lbrent.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 16));
 		lbrent.setBounds(702, 297, 114, 20);
 		contentPane.add(lbrent);
-		
+
 		comboBox = new JComboBox<Rent>();
 		comboBox.setModel(new DefaultComboBoxModel(Rent.values()));
-		comboBox.setBounds(999, 297, 89, 22);
+		comboBox.setBounds(869, 297, 219, 22);
 		contentPane.add(comboBox);
-		
+
 		frame.validate();
 		frame.repaint();
 	}
-	
+
+	// Getters for the user input and send it to the controller
+
 	public String getDir() {
 		return tfdir.getText();
 	}
-	
+
 	public String getTitle() {
 		return tftitle.getText();
 	}
-	
+
 	public String getYear() {
 		return tfyear.getText();
 	}
-	
+
 	public String getGenre() {
 		return tfgenre.getText();
 	}
-	
+
 	public String getRent() {
-		return ((Rent)comboBox.getSelectedItem()).getFree();
+		return ((Rent) comboBox.getSelectedItem()).getFree();
 	}
 }

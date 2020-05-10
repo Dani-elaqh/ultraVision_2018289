@@ -1,4 +1,5 @@
 package view;
+//Class Gui for the live concerts table , display and adding new titles to the table 
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,8 +19,13 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.border.LineBorder;
 
 public class LiveConcerts extends JFrame {
+	
+	//Global so all method that need them can accesess them 
 
 	private JPanel contentPane;
 	private JTable table;
@@ -29,23 +35,30 @@ public class LiveConcerts extends JFrame {
 	private JTextField tfGenre;
 	private JTextField tfFormat;
 	JComboBox <Rent>comboBox;
+	//The window need to know who and and which is the controller for this window
 	private ConcertController controllerInternalRef;
 
 
+	
 	public LiveConcerts(ConcertController controller) {
+		//Setting the reference of the controller
 		this.controllerInternalRef= controller;
 		
+		//Setting the attributes for this window and components
 		JFrame frame = new JFrame();
+		frame.setBackground(SystemColor.inactiveCaptionBorder);
 		frame.setVisible(true);
 		frame.setBounds(100, 100, 1101, 698);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.inactiveCaptionBorder);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblLiveConcerts = new JLabel("Live Concerts");
-		lblLiveConcerts.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 18));
-		lblLiveConcerts.setBounds(447, 55, 164, 50);
+		lblLiveConcerts.setForeground(new Color(128, 0, 128));
+		lblLiveConcerts.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 20));
+		lblLiveConcerts.setBounds(449, 34, 164, 50);
 		contentPane.add(lblLiveConcerts);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -85,7 +98,7 @@ public class LiveConcerts extends JFrame {
 		lblgenre.setBounds(729, 325, 142, 16);
 		contentPane.add(lblgenre);
 		
-		JLabel lblrented = new JLabel("Rented");
+		JLabel lblrented = new JLabel("For Rent");
 		lblrented.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 15));
 		lblrented.setBounds(729, 390, 142, 16);
 		contentPane.add(lblrented);
@@ -96,6 +109,7 @@ public class LiveConcerts extends JFrame {
 		contentPane.add(lblformat);
 		
 		JButton btnadd = new JButton("Add New title");
+		btnadd.setBorder(new LineBorder(new Color(100, 149, 237), 3, true));
 		btnadd.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 17));
 		btnadd.addActionListener((ActionListener)controller);
 		btnadd.setActionCommand("add");

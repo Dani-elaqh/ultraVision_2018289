@@ -1,9 +1,11 @@
 package controller;
 
+//Controller for the first window of the program 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import view.Menu;
+import view.SearchCustomer;
 
 public class MenuController implements ActionListener {
 
@@ -24,26 +26,17 @@ public class MenuController implements ActionListener {
 
 		}
 
-		else {
+		else if (e.getActionCommand().equals("entertainment")) {
 			new EntertainmentController();
 		}
+
+		else if (e.getActionCommand().equals("register")) {
+			new RegRentController();
+		}
+
+		else if (e.getActionCommand().equals("search")) {
+			new SearchCustomer();
+		}
+
 	}
 }
-
-//boolean validCustomer = false;
-//if(RegCustomer.isEmail(RegCustomer.getEmail()) ==true || RegCustomer.isCard(RegCustomer.getCard())==true  || RegCustomer.isDate(RegCustomer.getDate())==true ) {
-//validCustomer = true;
-//}
-//else if(RegCustomer.isDate(RegCustomer.getDate())==false) {
-//JOptionPane.showMessageDialog(null, "Please insert a valid date");
-//validCustomer = false;
-//}
-//else if(RegCustomer.isCard(RegCustomer.getCard())==false) {
-//JOptionPane.showMessageDialog(null, "Please insert a valid card");
-//validCustomer = false;
-//}
-//else if(RegCustomer.isEmail(RegCustomer.getEmail()) ==false) {
-//JOptionPane.showMessageDialog(null, "Please insert a valid email");
-//validCustomer = false;
-//		
-//}

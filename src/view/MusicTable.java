@@ -1,4 +1,5 @@
 package view;
+//This class is in charge of managing the window for music table 
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,6 +16,8 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class MusicTable extends JFrame {
 
@@ -27,10 +30,11 @@ public class MusicTable extends JFrame {
 	private MusicController controllerInternalRef;
 
 	public MusicTable(MusicController controller) {
+		//Reference to the controller locally
 		this.controllerInternalRef = controller;
 
 		JFrame frame = new JFrame();
-
+		//Attributes and components for this window, music table 
 		frame.setVisible(true);
 		frame.setBounds(100, 100, 1072, 462);
 		contentPane = new JPanel();
@@ -39,12 +43,13 @@ public class MusicTable extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblMusicData = new JLabel("Music data");
-		lblMusicData.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 17));
-		lblMusicData.setBounds(500, 11, 152, 16);
+		lblMusicData.setForeground(new Color(128, 0, 128));
+		lblMusicData.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 20));
+		lblMusicData.setBounds(500, 13, 152, 16);
 		contentPane.add(lblMusicData);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(24, 40, 563, 324);
+		scrollPane.setBounds(24, 61, 563, 324);
 		contentPane.add(scrollPane);
 
 		String[] columnNames = { "MusicID", "Artist", "Title", "Year of release", "rented" };
@@ -60,7 +65,9 @@ public class MusicTable extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JButton btnUpdate = new JButton("Add new title");
-		btnUpdate.setBounds(783, 287, 146, 25);
+		btnUpdate.setBorder(new LineBorder(new Color(100, 149, 237), 3, true));
+		btnUpdate.setFont(new Font("Lucida Sans Typewriter", Font.BOLD, 16));
+		btnUpdate.setBounds(783, 287, 165, 41);
 		contentPane.add(btnUpdate);
 		btnUpdate.addActionListener((ActionListener)controller);
 		btnUpdate.setActionCommand("add");
@@ -112,6 +119,7 @@ public class MusicTable extends JFrame {
 
 	}
 	
+	//Getter for the text fields
 	public String getArtist() {
 		return tfartist.getText();
 	}
